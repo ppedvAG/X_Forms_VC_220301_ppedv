@@ -40,13 +40,13 @@ namespace X_Forms
             (sender as Button).Text = "Button wurde betätigt";
         }
 
-        private void Ibtn_Beispiel_Clicked(object sender, EventArgs e)
+        private void IBtn_Beispiel_Clicked(object sender, EventArgs e)
         {
             //Neuzuweisung der Textproperty des Labels mit dem Ausgewählten Element des Pickers
             Lbl_Main.Text = Pkr_Monkeys.SelectedItem?.ToString();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Btn_Aendern_Clicked(object sender, EventArgs e)
         {
             DisplayAlert("Person", $"{(StL_DataBinding.BindingContext as Person).Nachname}", "OK");
 
