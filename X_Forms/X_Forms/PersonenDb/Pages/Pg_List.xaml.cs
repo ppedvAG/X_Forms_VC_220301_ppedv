@@ -42,6 +42,8 @@ namespace X_Forms.PersonenDb.Pages
             {
                 //Löschen aus lokaler Liste
                 StaticObjects.PersonenListe.Remove(p);
+
+                StaticObjects.PersonenDatenbank.DeletePerson(p);
             }
 
         }

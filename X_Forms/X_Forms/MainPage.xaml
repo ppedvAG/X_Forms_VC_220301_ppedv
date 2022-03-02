@@ -48,6 +48,15 @@
                 <!--Jedes UI-Element hat eien Standart-Property, auf die direkt zugegriffen werden kann (meißt Text, Children, Content)-->
                 Hallo, ich bin ein String
 
+
+                <Label.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color" Android="Yellow" iOS="Orange" Default="Green"/>
+                </Label.BackgroundColor>
+
+                <Label.FontSize>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="20.0" TV="40.0" Watch="15.0" Default="20.0"/>
+                </Label.FontSize>
+                
             </Label>
 
             <!--Dieser Button nimmt den globalen Button-Style an (vgl. ResDict.xaml)-->

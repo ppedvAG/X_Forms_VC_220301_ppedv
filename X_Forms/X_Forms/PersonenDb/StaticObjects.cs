@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using X_Forms.PersonenDb.Services;
 
 namespace X_Forms.PersonenDb
 {
     //Statische Klasse mit globalen Objekten (kann auch Service- und Controllerobjekte beinhalten)
     public static class StaticObjects
     {
+        public static PersonenDbController PersonenDatenbank { get; set; } = new PersonenDbController();
+
         private static ObservableCollection<Model.Person> personenListe;
         public static ObservableCollection<Model.Person> PersonenListe
         {
@@ -15,10 +18,11 @@ namespace X_Forms.PersonenDb
             {
                 if (personenListe == null)
                 {
-                    personenListe = new ObservableCollection<Model.Person>()
-                    {
-                        new Model.Person() { Vorname = "Rainer", Nachname = "Zufall" }
-                    };
+                    //personenListe = new ObservableCollection<Model.Person>()
+                    //{
+                    //    new Model.Person() { Vorname = "Rainer", Nachname = "Zufall" }
+                    //};
+                    personenListe = new ObservableCollection<Model.Person>(PersonenDatenbank.GetPeople());
                 }
                 return personenListe;
             }

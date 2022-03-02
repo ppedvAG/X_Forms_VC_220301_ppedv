@@ -36,6 +36,8 @@ namespace X_Forms.PersonenDb.Pages
 
             //Hinzufügen zur lokalen Liste
             StaticObjects.PersonenListe.Add(person);
+
+            StaticObjects.PersonenDatenbank.AddPerson(person);
                 
             //Leeren  der Eingabefelder
             Entry_Vorname.Text = string.Empty;
