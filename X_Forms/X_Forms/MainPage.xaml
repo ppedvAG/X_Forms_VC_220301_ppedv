@@ -85,9 +85,10 @@
             <!--Dieser Button nimmt einen explizieten Button-Style an (vgl. RessourceDict.xaml)-->
             <!--Mittels einer StaticResource-Bindung kann auf in übergeordneten Container definierte Ressourcen zugegriffen werden-->
             <Button x:Name="Btn_Resources"
-                Text="{StaticResource BtnString}"
-                FontSize="{StaticResource globalFontSize}"
-                Style="{StaticResource BtnStyle}"/>
+                    Text="{StaticResource BtnString}"
+                    FontSize="{StaticResource globalFontSize}"
+                    Style="{StaticResource BtnStyle}"
+                    BackgroundColor="LightGreen"/>
 
             <!--An eine Ressource können beliebig viele Properties gehängt werden-->
             <Label Text="{StaticResource BtnString}"/>

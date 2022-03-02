@@ -36,6 +36,7 @@ namespace X_Forms.NavigationBsp.FlyoutBsp
                     new FlyoutNavigationBspFlyoutMenuItem { Id = 0, Title = "MainPage", TargetType=typeof(MainPage) },
                     new FlyoutNavigationBspFlyoutMenuItem { Id = 1, Title = "Tabbed", TargetType=typeof(NavigationBsp.TabbedPageBsp) },
                     new FlyoutNavigationBspFlyoutMenuItem { Id = 2, Title = "Carousel", TargetType=typeof(NavigationBsp.CarouselPageBsp) },
+                    new FlyoutNavigationBspFlyoutMenuItem { Id = 3, Title = "PersonenDB", TargetType=typeof(PersonenDb.Nav.PDB_FlyoutNav) },
                 });
             }
 
