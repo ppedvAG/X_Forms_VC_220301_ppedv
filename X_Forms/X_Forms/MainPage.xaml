@@ -7,7 +7,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:X_Forms"
              x:Class="X_Forms.MainPage"
-             BackgroundColor="LightBlue">
+             BackgroundColor="LightBlue"
+             Title="MainPage">
 
     <!--Jeder Container hat eine Resource-Property, in welcher Ressourcen (Objekte, Styles, Converter, ...) für diesen 
     Container bereit gestellt werden können.-->
@@ -161,6 +162,19 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="Neue Person" x:Name="Btn_New" Clicked="Btn_New_Clicked"/>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Button Text="Grid"
+                        Clicked="Grid_Clicked"/>
+                <Button Text="Stack"
+                        Clicked="Stack_Clicked"/>
+                <Button Text="Tabbed"
+                        Clicked="Tab_Clicked"/>
+                <Button Text="Carousel"
+                        Clicked="Carousel_Clicked"/>
+
+            </StackLayout>
 
         </StackLayout>
     </ScrollView>

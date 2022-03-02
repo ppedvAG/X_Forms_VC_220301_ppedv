@@ -14,7 +14,10 @@ namespace X_Forms
 
             //Zuweisung einer Page zu der MainPage-Property (Startseite)
             //MainPage = new Layouts.StackLayoutBsp();
-            MainPage = new Uebungen.U_RelativeL();
+
+            //MainPage = new NavigationPage(new MainPage());
+
+            MainPage = new NavigationBsp.FlyoutBsp.FlyoutNavigationBsp();
 
         }
 

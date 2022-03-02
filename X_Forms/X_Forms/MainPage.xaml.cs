@@ -72,5 +72,23 @@ namespace X_Forms
                 Personenliste.Remove(person);
             }
         }
+
+        private void Grid_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Layouts.GridLayoutBsp());
+        }
+        private void Tab_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NavigationBsp.TabbedPageBsp());
+        }
+        private void Carousel_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NavigationBsp.CarouselPageBsp());
+        }
+
+        private void Stack_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Layouts.StackLayoutBsp());
+        }
     }
 }

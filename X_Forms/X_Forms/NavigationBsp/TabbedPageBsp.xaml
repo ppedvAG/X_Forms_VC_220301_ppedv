@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.NavigationBsp.TabbedPageBsp"
+            xmlns:uebungen="clr-namespace:X_Forms.Uebungen"
+            Title="Tabbed">
+    <ContentPage Title="Tab 1">
+        <StackLayout>
+            <Label Text="Ich bin eine ContentPage"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"/>
+        </StackLayout>
+    </ContentPage>
+    <uebungen:U_StackL/>
+    <uebungen:U_GridL/>
+    <uebungen:U_AbsoluteL/>
+    <uebungen:U_RelativeL Title="RELATIVE"/>
+</TabbedPage>
