@@ -5,6 +5,7 @@
 <!--Im Root-Container werden die in diesem Dokument benutzten Namespaces definiert, sowie der Verweis auf die anhängige Klasse (CodeBehind)-->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
              xmlns:local="clr-namespace:X_Forms"
              x:Class="X_Forms.MainPage"
              BackgroundColor="LightBlue"
@@ -56,7 +57,7 @@
                 <Label.FontSize>
                     <OnIdiom x:TypeArguments="x:Double" Phone="20.0" TV="40.0" Watch="15.0" Default="20.0"/>
                 </Label.FontSize>
-                
+
             </Label>
 
             <!--Dieser Button nimmt den globalen Button-Style an (vgl. ResDict.xaml)-->
@@ -142,36 +143,74 @@
                 <Button x:Name="Btn_Aendern" Text="Namen ändern" Clicked="Btn_Aendern_Clicked"/>
             </StackLayout>
 
-            <!--Die Property 'ItemSource' verweist auf die Quelle der Items für die Liste.
-            Hier wurde sie per Kurzbindung an die Property 'NamenListe' des BindingContextes 
-            der Page gebunden (vgl. CodeBehind-Konstruktor)-->
-            <ListView x:Name="LstV_Namen"
-                  HeightRequest="150"
-                  ItemsSource="{Binding Personenliste}">
-                <ListView.ItemTemplate>
-                    <!--Mittels DataTemplates kann das Erscheinen von einzelnen Elementen von ItemControls (hier ListView) defniert werden.
-                    DataTemplates müssen immer ein UI-Element vom Typ Cell beinhalten.-->
-                    <DataTemplate>
-                        <!--Innerhalb von DataTemplates findet immer ein DataBinding an die Elemente der ItemSource statt (vgl. CodeBehind).
-                                Dadurch finden Kurzbindungen an die Properties der Listenelemente statt.-->
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="2">
+            <StackLayout Spacing="0">
+                <StackLayout.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="BackgroundColor" Value="White"/>
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="BackgroundColor" Value="Black"/>
+                        <Setter Property="RowSpacing" Value="0"/>
+                        <Setter Property="ColumnSpacing" Value="0"/>
+                    </Style>
+                </StackLayout.Resources>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Vorname" TextTransform="Uppercase" TextDecorations="Underline" FontAttributes="Bold"/>
+                    <Label Text="Nachname" TextTransform="Uppercase" TextDecorations="Underline" FontAttributes="Bold" Grid.Column="1"/>
+                </Grid>
+
+                <!--Die Property 'ItemSource' verweist auf die Quelle der Items für die Liste.
+                Hier wurde sie per Kurzbindung an die Property 'NamenListe' des BindingContextes 
+                der Page gebunden (vgl. CodeBehind-Konstruktor)-->
+                <ScrollView HorizontalScrollBarVisibility="Always" Orientation="Horizontal">
+                    <ListView x:Name="LstV_Namen"
+                              HeightRequest="150"
+                              WidthRequest="1000"
+                              ItemsSource="{Binding Personenliste}">
+                        <ListView.ItemTemplate>
+                            <!--Mittels DataTemplates kann das Erscheinen von einzelnen Elementen von ItemControls (hier ListView) defniert werden.
+                        DataTemplates müssen immer ein UI-Element vom Typ Cell beinhalten.-->
+                            <DataTemplate>
                                 <!--Innerhalb von DataTemplates findet immer ein DataBinding an die Elemente der ItemSource statt (vgl. CodeBehind).
                                 Dadurch finden Kurzbindungen an die Properties der Listenelemente statt.-->
+                                <ViewCell>
+                                    <!--<StackLayout Orientation="Horizontal" Padding="2">
+                                -->
+                                    <!--Innerhalb von DataTemplates findet immer ein DataBinding an die Elemente der ItemSource statt (vgl. CodeBehind).
+                                Dadurch finden Kurzbindungen an die Properties der Listenelemente statt.-->
+                                    <!--
                                 <Label Text="{Binding Vorname}"/>
                                 <Label Text="{Binding Nachname}"/>
-                            </StackLayout>
+                            </StackLayout>-->
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="10000"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Vorname}"/>
+                                        <Label Text="{Binding Nachname}" Grid.Column="1"/>
+                                    </Grid>
 
-                            <!--ContextActions werden angezeigt, wenn der Benutzer (unter Android) länger auf eine Objekt 'touched'-->
-                            <ViewCell.ContextActions>
-                                <MenuItem Text="Löschen" Clicked="Mit_Delete_Clicked" CommandParameter="{Binding}"/>
-                            </ViewCell.ContextActions>
+                                    <!--ContextActions werden angezeigt, wenn der Benutzer (unter Android) länger auf eine Objekt 'touched'-->
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Löschen" Clicked="Mit_Delete_Clicked" CommandParameter="{Binding}"/>
+                                    </ViewCell.ContextActions>
+                                </ViewCell>
 
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Text="Neue Person" x:Name="Btn_New" Clicked="Btn_New_Clicked"/>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+                <Button Text="Neue Person" x:Name="Btn_New" Clicked="Btn_New_Clicked"/>
+
+            </StackLayout>
 
             <StackLayout Orientation="Horizontal">
 
@@ -185,6 +224,27 @@
                         Clicked="Carousel_Clicked"/>
 
             </StackLayout>
+
+            <Button Text="MC-Nachricht senden" x:Name="Btn_MCSender" Clicked="Btn_MCSender_Clicked"/>
+
+            <dg:DataGrid ItemsSource="{Binding Personenliste}"
+                         SelectionEnabled="True"
+                         RowHeight="50"
+                         HeaderBackground="White"
+                         BorderColor="Black"
+                         ActiveRowColor="Orange">
+                <dg:DataGrid.Columns>
+                    <dg:DataGridColumn PropertyName="Vorname" Width="*" Title="Vorname"/>
+                    <dg:DataGridColumn PropertyName="Nachname" Width="*" Title="Nachname"/>
+                </dg:DataGrid.Columns>
+                <dg:DataGrid.RowsBackgroundColorPalette>
+                    <dg:PaletteCollection>
+                        <Color>#F2F2F2</Color>
+                        <Color>#FFFFFF</Color>
+                    </dg:PaletteCollection>
+                </dg:DataGrid.RowsBackgroundColorPalette>
+            </dg:DataGrid>
+            <!--https://github.com/akgulebubekir/Xamarin.Forms.DataGrid über NuGet-->
 
         </StackLayout>
     </ScrollView>

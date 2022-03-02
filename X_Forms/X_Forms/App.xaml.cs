@@ -12,6 +12,8 @@ namespace X_Forms
         {
             InitializeComponent();
 
+            Xamarin.Forms.DataGrid.DataGridComponent.Init();
+
             //Zuweisung einer Page zu der MainPage-Property (Startseite)
             //MainPage = new Layouts.StackLayoutBsp();
 

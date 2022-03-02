@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using X_Forms.PersonenDb.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -43,7 +43,11 @@ namespace X_Forms.PersonenDb.Pages
                 //Löschen aus lokaler Liste
                 StaticObjects.PersonenListe.Remove(p);
 
+                //Löschen aus Datenbank
                 StaticObjects.PersonenDatenbank.DeletePerson(p);
+
+                //Ausgabe eines Toasts
+                ToastController.ShowToastMessage($"{p.Vorname} {p.Nachname} wurde gelöscht.", ToastDuration.Long);
             }
 
         }

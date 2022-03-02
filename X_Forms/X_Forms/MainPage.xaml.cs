@@ -90,5 +90,14 @@ namespace X_Forms
         {
             Navigation.PushModalAsync(new Layouts.StackLayoutBsp());
         }
+
+        private void Btn_MCSender_Clicked(object sender, EventArgs e)
+        {
+            Page subscriber = new McSubscriberPage();
+
+            MessagingCenter.Send(this, "Nachricht", Pkr_Monkeys.SelectedItem?.ToString());
+
+            Navigation.PushAsync(subscriber);
+        }
     }
 }
