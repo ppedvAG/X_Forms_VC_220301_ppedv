@@ -6,6 +6,7 @@ using Xamarin.Forms;
 
 namespace X_Forms.MVVMBsp.Converter
 {
+    //Konverter für MultiBinding (hier zur Validierung der Einträge)
     internal class EntryValidateConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

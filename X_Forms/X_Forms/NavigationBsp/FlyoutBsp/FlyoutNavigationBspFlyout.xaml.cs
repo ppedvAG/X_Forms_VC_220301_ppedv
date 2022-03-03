@@ -38,6 +38,7 @@ namespace X_Forms.NavigationBsp.FlyoutBsp
                     new FlyoutNavigationBspFlyoutMenuItem { Id = 2, Title = "Carousel", TargetType=typeof(NavigationBsp.CarouselPageBsp) },
                     new FlyoutNavigationBspFlyoutMenuItem { Id = 3, Title = "PersonenDB", TargetType=typeof(PersonenDb.Nav.PDB_FlyoutNav) },
                     new FlyoutNavigationBspFlyoutMenuItem { Id = 4, Title = "MVVMBsp", TargetType=typeof(MVVMBsp.View.MainView) },
+                    new FlyoutNavigationBspFlyoutMenuItem { Id = 5, Title = "GoogleBooks", TargetType=typeof(Uebungen.GoogleBooks.View.MainView) },
                 });
             }
 

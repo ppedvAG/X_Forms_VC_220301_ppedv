@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. MVVMBsp/View-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.Uebungen.GoogleBooks.View.MainView"
+             xmlns:vm="clr-namespace:X_Forms.Uebungen.GoogleBooks.ViewModel"
+             Title="GoogleBooks">
+
+    <!--Zuweisung des ViewModels-->
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="5"
+                 Spacing="10"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+
+        <SearchBar Text="{Binding SearchString}" Placeholder="search..." SearchCommand="{Binding SearchCommand}"/>
+
+        <ListView x:Name="LstV_Books"
+                  ItemsSource="{Binding BookList}"
+                  IsRefreshing="{Binding IsRefreshing}"
+                  RefreshCommand="{Binding SearchCommand}"
+                  IsPullToRefreshEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell
+                        Text="{Binding VolumeInfo.Title}"
+                        Detail="{Binding VolumeInfo.Description}"
+                        ImageSource="{Binding VolumeInfo.ImageLinks.SmallThumbnail}"/>
+                    <!--<ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            
+                            <Image Grid.RowSpan="2" Source="{Binding VolumeInfo.ImageLinks.SmallThumbnail}"/>
+                            <Label Grid.Column="1" Text="{Binding VolumeInfo.Title}" TextTransform="Uppercase" FontAttributes="Bold"/>
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding VolumeInfo.Description}"/>
+                        </Grid>
+                    </ViewCell>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
