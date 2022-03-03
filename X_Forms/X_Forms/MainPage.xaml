@@ -7,6 +7,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
              xmlns:local="clr-namespace:X_Forms"
+             xmlns:loc="clr-namespace:X_Forms.Properties"
              x:Class="X_Forms.MainPage"
              BackgroundColor="LightBlue"
              Title="MainPage">
@@ -212,6 +213,7 @@
 
             </StackLayout>
 
+            <!--Verweis auf Beispiel-Layouts und -Navigation (vgl. CodeBehind, NavigationBsp und Layouts)-->
             <StackLayout Orientation="Horizontal">
 
                 <Button Text="Grid"
@@ -225,7 +227,15 @@
 
             </StackLayout>
 
-            <Button Text="MC-Nachricht senden" x:Name="Btn_MCSender" Clicked="Btn_MCSender_Clicked"/>
+            <!--Label zum Anzeigen des Batterie-Status mittels Xamarin.Essentials (vgl. CodeBehind)-->
+            <Label x:Name="Lbl_Battery"/>
+            
+            <!--Beispiele für lokalisierte Beschriftungen (vgl. CodeBehind sowie Resource.resx und Resource.de.resx)-->
+            <!--Mittels der x:Static-Bindung können Properties an resx-Files gebunden werden-->
+            <!--Button zum Öffnen der Youtube-App-->
+            <Button Text="{x:Static loc:Resources.Btn_McSender_Text}" x:Name="Btn_MCSender" Clicked="Btn_MCSender_Clicked"/>
+            <!--Button zum Senden einer MC-Nachricht (vgl. CodeBehind und Pg_Subscriber.cs)-->
+            <Button x:Name="Btn_Youtube" Text="{x:Static loc:Resources.Btn_Youtube_Text}" Clicked="Btn_Youtube_Clicked"/>
 
             <dg:DataGrid ItemsSource="{Binding Personenliste}"
                          SelectionEnabled="True"
@@ -248,4 +258,9 @@
 
         </StackLayout>
     </ScrollView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Liste löschen" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
 </ContentPage>
